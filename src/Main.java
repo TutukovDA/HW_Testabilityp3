@@ -1,11 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        for (int i = 1; i < 4; i++) {
+        float loanRate = 9.99F;//Процентную ставку
+        double amountOfCredit = 1_000_000;// Сумма кредита
+        int creditTerm = 3;// Максимальный срок кредита в годах
+        for (int i = 1; i <= creditTerm; i++) {
             CreditCalcService calcService = new CreditCalcService();
-            double se = calcService.calculate(1_000_000, 9.99, i);
-            System.out.println("Ежемесячный платеж   " + "Процентная ставка ");
-            String p = "9,99";
-            System.out.println("   " + (int) se + " ₽               " + p + " %");
+            double monthPay = calcService.calculateMonthPay(amountOfCredit, loanRate, i);
+            System.out.println("Срок кредита (в годах)    " + "Ежемесячный платеж   " + "Процентная ставка ");
+            System.out.println("        " + i + "  " + "                      " + (int) monthPay + " ₽               " + loanRate + "%");
         }
     }
 }
